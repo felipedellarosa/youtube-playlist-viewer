@@ -1,8 +1,14 @@
 import streamlit as st
 from googleapiclient.discovery import build
 from urllib.parse import urlparse, parse_qs
+from dotenv import load_dotenv
+import os
 
-API_KEY = "AIzaSyADZwXf8w2Y3x1_RrLq3Ij6PrHlD1sMvKU"
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+# Inicializa o serviço do YouTube
 youtube = build("youtube", "v3", developerKey=API_KEY)
 
 def extrair_id_playlist(link):
